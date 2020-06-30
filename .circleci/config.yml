@@ -1,7 +1,7 @@
 version: 2
 jobs:
   test_regression_model:
-    working_directory: ~/project
+    working_directory: ~/ML-with-CICD
     docker:
       - image: circleci/python:3.7.2
     steps:
@@ -9,10 +9,9 @@ jobs:
       - run:
           name: Running tests
           command: |
-            virtualenv venv
+            python -m venv venv
             . venv/bin/activate
-            pip install -U --upgrade pip
-            pip install -U -r packages/regression_model/requirements.txt
+            pip install -r packages/regression_model/requirements.txt
             chmod +x ./scripts/fetch_kaggle_dataset.sh
             ./scripts/fetch_kaggle_dataset.sh
             pytest packages/regression_model/tests

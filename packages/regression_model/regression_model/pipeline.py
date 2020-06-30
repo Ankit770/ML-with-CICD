@@ -2,6 +2,7 @@ from sklearn.linear_model import Lasso
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
 from regression_model.processing import preprocessors as pp
+from regression_model.processing import features as ft
 from regression_model.config import config
 
 price_pipe=Pipeline(
@@ -11,7 +12,7 @@ price_pipe=Pipeline(
         ('temporal_variable',pp.TemporalVariableEstimator(variables=config.TEMPORAL_VARS,reference_variable=config.DROP_FEATURES)),
         ('rare_label_encoder',pp.RareLabelCategoricalEncoder(tol=0.01,variables=config.CATEGORICAL_VARS)),
         ('categorical_encoder',pp.CategoricalEncoder(variables=config.CATEGORICAL_VARS)),
-        ('log_transformer',pp.LogTransformer(variables=config.NUMERICAL_LOG_VARS)),
+        ('log_transformer',ft.LogTransformer(variables=config.NUMERICAL_LOG_VARS)),
         ('drop_features',pp.DropUnecessaryFeatures(variables_to_drop=config.DROP_FEATURES)),
         ('scaler',MinMaxScaler()),
         ('Linear_model',Lasso(alpha=0.005,random_state=0))

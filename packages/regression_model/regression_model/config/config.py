@@ -31,7 +31,7 @@ FEATURES=['MSSubClass',
  'GarageCars',
  'PavedDrive',
  'LotFrontage','YrSold']
-
+PIPELINE_SAVE_FILE="lasso_regression_output"
 DROP_FEATURES='YrSold'
 NUMERICAL_VARS_WITH_NA=['LotFrontage']
 CATEGORICAL_VARS_WITH_NA=['MasVnrType','BsmtQual','BsmtExposure','FireplaceQu','GarageType','GarageFinish']

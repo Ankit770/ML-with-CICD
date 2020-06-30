@@ -1,4 +1,11 @@
-version: 2
+version: 2.1
+orbs:
+  heroku: circleci/heroku@0.0.10
+workflows:
+  test-all:
+    jobs:
+      - test_regression_model
+
 jobs:
   test_regression_model:
     working_directory: ~/project
@@ -16,10 +23,5 @@ jobs:
             pip install -r packages/regression_model/requirements.txt
             chmod +x ./scripts/fetch_kaggle_dataset.sh
             ./scripts/fetch_kaggle_dataset.sh
-            py.test packages/regression_model/tests
+            pytest -v packages/regression_model/tests
 
-workflows:
-  version: 2
-  test-all:
-    jobs:
-      - test_regression_model

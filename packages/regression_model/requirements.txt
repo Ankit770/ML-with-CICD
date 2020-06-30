@@ -1,5 +1,5 @@
 numpy==1.15.4
 pandas>-0.25.3,<0.26.0
 scikit-learn==0.20.2
-pytest==4.0.2
+pytest==5.2.0
 kaggle==1.5.1.1

@@ -62,7 +62,7 @@ jobs:
             python --version
             pip install --upgrade pip
             pip install -r packages/ml_api/requirements.txt
-            pytest -v packages/ml_api/tests -k "not differential"
+            pytest -v packages/ml_api/tests -v -m "not differential"
 
       - save_cache:
           key: py-deps-{{ checksum "packages/ml_api/requirements.txt"}}
@@ -110,7 +110,7 @@ jobs:
           command: |
             . venv/bin/activate
             pip install -r packages/ml_api/requirements.txt
-            pytest -v packages/ml_api/tests -m differential
+            pytest -v packages/ml_api/tests -v -m differential
 
 workflows:
   version: 2

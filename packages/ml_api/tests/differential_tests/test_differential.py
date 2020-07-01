@@ -1,6 +1,6 @@
 import math
 import pytest
-from regression_model.config import model_config
+from regression_model import config as model_config
 from regression_model.predict import make_prediction
 from regression_model.processing.data_management import load_dataset
 import pandas as pd

@@ -32,6 +32,7 @@ with open(PACKAGE_DIR / 'VERSION') as f:
     about['__version__']=_version
 
 setup(
+    setup_requires=['wheel']
     name=NAME,
     version=about['__version__'],
     description=DESCRIPTION,

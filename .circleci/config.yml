@@ -117,15 +117,12 @@ workflows:
   test-all:
     jobs:
       - test_regression_model
-      - test_ml_api
-      - train_and_upload_regression_model: 
+      - train_and_upload_regression_model:
           requires:
             - test_regression_model
-            - test_ml_api
+      - test_ml_api:
+          requires:
+            - train_and_upload_regression_model      
       - differential_tests:
           requires:
-            - train_and_upload_regression_model
-          filters:
-            branches:
-              only:
-                - master
+            - test_ml_api

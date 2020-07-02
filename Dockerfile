@@ -15,5 +15,5 @@ RUN chmod +x /opt/ml_api/run.sh
 RUN chown -R ml-api-user:ml-api-user ./
 
 USER ml-api-user
-EXPOSE 5000
+EXPOSE 8000
 CMD ["bash", "./run.sh"]

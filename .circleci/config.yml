@@ -112,13 +112,22 @@ jobs:
             pip install -r packages/ml_api/requirements.txt
             pytest -v packages/ml_api/tests -v -m differential
 
+  deploy_to_heroku:
+    <<: *defaults
+    setps:
+      - checkout
+      - run:
+          name: Deploy to heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
 workflows:
   version: 2
   test-all:
     jobs:
       - test_regression_model
       - test_ml_api
-      - section_9_differential_tests
+      - differential_tests
       - train_and_upload_regression_model:
           requires:
             - test_regression_model
@@ -128,3 +137,11 @@ workflows:
             branches:
               only:
                 - master
+      - deploy_to_heroku:
+          requires:
+            - train_and_upload_regression_model
+          filters:
+            branches:
+              only:
+                master
+                

@@ -157,7 +157,14 @@ workflows:
             branches:
               only:
                 - master
-      - deploy_to_heroku:
+      # - deploy_to_heroku:
+      #     requires:
+      #       - train_and_upload_regression_model
+      #     filters:
+      #       branches:
+      #         only:
+      #           master
+      - build_and_push_to_heroku_docker:
           requires:
             - train_and_upload_regression_model
           filters:

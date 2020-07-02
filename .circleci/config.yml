@@ -130,7 +130,7 @@ jobs:
       - run:
           name: Setup Heroku CLI
           command: |
-            wget -qO- https://cli-aaserts.heroku.com/install-ubuntu.sh | sh
+            wget -qO- https://cli-aasets.heroku.com/install-ubuntu.sh | sh
       - run:
           name: Build and Push image
           command: |
